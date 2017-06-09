@@ -65,6 +65,17 @@ int main(){
     std::cout << "diff of two point is: " << diff << std::endl;
     
     std::cout << "distance between two points is: " << diff.norm() << std::endl;
+    
+    std::cout << "dot product of two points is: " << testpoint1.dot(testpoint2) << std::endl;
+    
+    if (testpoint1 == testpoint2)
+    {
+        std::cout << " two points are same \n";
+    }
+    else
+    {
+        std::cout << "two points are different\n";
+    }
     return 0;
 }
 

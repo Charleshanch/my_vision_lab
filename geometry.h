@@ -47,7 +47,24 @@ public:
         y_ = my2dpointi.y_;
         return *this;
     }
-
+    
+    bool operator == (const My2Dpointi& pt)
+    {
+        if (x_ == pt.x_ && y_ == pt.y_)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
+    
+    bool operator != (const My2Dpointi& pt)
+    {
+        return !(*this == pt);
+    }
+    
     friend std::ostream& operator << (std::ostream& os, const My2Dpointi& pt);
 
     friend My2Dpointi operator + (const My2Dpointi& ptl, const My2Dpointi& ptr);
