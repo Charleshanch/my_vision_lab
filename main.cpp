@@ -50,9 +50,21 @@ int main(){
 //        
 //        cnt++;
 //    }
-    CH::My2Dpointi testpoint(5,3);
-    std::cout << "My 2d point: " << testpoint << std::endl;
+    CH::My2Dpointi testpoint1(5,3);
+    std::cout << "My 2d point1: " << testpoint1 << std::endl;
     
+    CH::My2Dpointi testpoint2(4,6);
+    std::cout << "My 2d point2: " << testpoint2 << std::endl;
+    
+    CH::My2Dpointi sumpoint;
+    sumpoint = testpoint1 + testpoint2;
+    std::cout << "sum point is: " << sumpoint << std::endl;
+    
+    CH::My2Dpointi diff;
+    diff = testpoint1 - testpoint2;
+    std::cout << "diff of two point is: " << diff << std::endl;
+    
+    std::cout << "distance between two points is: " << diff.norm() << std::endl;
     return 0;
 }
 

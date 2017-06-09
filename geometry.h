@@ -24,7 +24,7 @@ public:
         y_ = 0;
     }
     
-    ///@ 
+    ///@ explicit constructor
     My2Dpointi(const int& x, const int& y)
     {
         x_ = x;
@@ -34,13 +34,35 @@ public:
     ///@ copy constuctor
     My2Dpointi(const My2Dpointi& copy):x_(copy.x_),y_(copy.y_){}
     
+    ///@ assignment operator overload
+    My2Dpointi& operator = (const My2Dpointi& my2dpointi)
+    {
+        // detect self assignment
+        if (this == &my2dpointi)
+        {
+            return *this;
+        }
+        
+        x_ = my2dpointi.x_;
+        y_ = my2dpointi.y_;
+        return *this;
+    }
+
     friend std::ostream& operator << (std::ostream& os, const My2Dpointi& pt);
+
+    friend My2Dpointi operator + (const My2Dpointi& ptl, const My2Dpointi& ptr);
     
-//    My2Dpointi& operator + (const My2Dpointi& lhs, const My2Dpointi& rhs)
-//    {
-////        My2Dpointi ret
-//        return My2Dpointi(0,0);
-//    }
+    friend My2Dpointi operator - (const My2Dpointi& ptl, const My2Dpointi& ptr);
+    
+    int dot(const My2Dpointi& pt)
+    {
+        return (x_ * pt.x_ + y_ * pt.y_);
+    }
+    
+    double norm(void)
+    {
+        return std::sqrt(x_ * x_ + y_ * y_);
+    }
 
 private:
     int x_;
@@ -54,10 +76,17 @@ std::ostream& operator << (std::ostream& os, const My2Dpointi& pt   )
     return os;
 }
 
-template <class T>
-class Mypoint3d {
+My2Dpointi operator+ (const My2Dpointi& ptl, const My2Dpointi& ptr)
+{
+    My2Dpointi ret(ptl.x_ + ptr.x_, ptl.y_ + ptr.y_);
+    return ret;
+}
 
-};
-    
+My2Dpointi operator- (const My2Dpointi& ptl, const My2Dpointi& ptr)
+{
+    My2Dpointi ret(ptl.x_ - ptr.x_, ptl.y_ - ptr.y_);
+    return ret;
+}
+ 
 } // namespace CH
 #endif /* geometry_h */
